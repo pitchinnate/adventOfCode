@@ -3,11 +3,12 @@ package main
 import (
 	"log"
 	"os"
+	"strconv"
 	"strings"
 )
 
 func main() {
-	day6_2()
+	day1_2()
 }
 
 func ReadFileToLines(name string) []string {
@@ -27,4 +28,23 @@ func ReadFileToString(name string) string {
 	}
 	dataString := string(data)
 	return dataString
+}
+
+func processLines(lines []string) (col1 []int, col2 []int) {
+	for _, line := range lines {
+		pieces := strings.Split(line, " ")
+		foundCol1 := false
+		for _, piece := range pieces {
+			if piece != "" {
+				val, _ := strconv.Atoi(piece)
+				if !foundCol1 {
+					col1 = append(col1, val)
+					foundCol1 = true
+				} else {
+					col2 = append(col2, val)
+				}
+			}
+		}
+	}
+	return
 }
