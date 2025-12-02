@@ -41,9 +41,8 @@ func day2_2() {
 		//log.Printf("day2_1: start=%d, end=%d", start, end)
 		for i := start; i <= end; i++ {
 			stringVal := strconv.Itoa(i)
-			alreadyInvalid := false
 			for split := 1; split <= len(stringVal)/2; split++ {
-				if len(stringVal)%split == 0 && !alreadyInvalid {
+				if len(stringVal)%split == 0 {
 					allPieces := []string{}
 					//log.Printf("val: %d len %d split %d", i, len(stringVal), split)
 					for j := 0; j < len(stringVal)/split; j += 1 {
@@ -64,7 +63,7 @@ func day2_2() {
 					}
 					if allMatch {
 						accumulator += i
-						alreadyInvalid = true
+						break
 					}
 				}
 			}
