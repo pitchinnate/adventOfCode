@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	day2_2()
+	day3_2()
 }
 
 func ReadFileToLines(name string) []string {
